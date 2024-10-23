@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Generated file. This file is used by SDK to show example inside Welcome screen. It is not the part of the example. -->
+<instructionals module="Aurora OS Demos">
+ <examples>
+  <example name="SQLite Logger" imageUrl="C:/Users/miron/AppData/Roaming/AuroraOS-SDK/QtCreator\Aurora OS Demos\SQLiteLogger\example-icon.png" projectPath="ru.auroraos.SQLiteLogger.pro">
+   <description><![CDATA[The application writes data to files and saves file information to a SQLite database.]]></description>
+   <tags>AuroraOS,demo,sqlite</tags>
+   <platforms>Mer</platforms>
+   <preferredFeatures>Mer.Wizard.Feature.Emulator</preferredFeatures>
+   <fileToOpen>/qml/SQLiteLogger.qml</fileToOpen>
+  </example>
+ </examples>
+</instructionals>

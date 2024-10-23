@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.auroraos.SQLiteLogger
+Exec=/usr/bin/ru.auroraos.SQLiteLogger
+Name=Logger
+Name[ru]=Логгер
+
+[X-Application]
+Permissions=UserDirs
+OrganizationName=ru.auroraos
+ApplicationName=SQLiteLogger
