@@ -37,6 +37,8 @@ private:
     QScopedPointer<QThread> m_thread;
 };
 
+
+//worker____________________
 class DatabaseServiceWorker : public QObject
 {
     Q_OBJECT

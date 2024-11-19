@@ -11,6 +11,10 @@ CONFIG += \
 PKGCONFIG += \
 
 SOURCES += \
+    src/MyChildClass.cpp \
+    src/MyParentClass.cpp \
+    src/SelectWorker.cpp \
+    src/abstractWorker.cpp \
     src/database/databaseconnection.cpp \
     src/database/databasemanager.cpp \
     src/database/databasemodel.cpp \
@@ -21,6 +25,8 @@ SOURCES += \
     src/threadchecker.cpp
 
 HEADERS += \
+    src/SelectWorker.h \
+    src/abstractWorker.h \
     src/database/databaseconnection.h \
     src/database/databasemanager.h \
     src/database/databasemodel.h \

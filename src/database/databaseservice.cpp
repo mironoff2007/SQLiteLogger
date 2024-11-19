@@ -4,12 +4,16 @@
 #include "databaseservice.h"
 #include <QFileInfo>
 #include "../threadchecker.h"
+#include "../AbstractWorkerTemp.h"
+#include "../MyChildClass.cpp"
 
 DatabaseService::DatabaseService(QObject *parent)
     : QObject(parent)
     , m_thread(new QThread)
 {
     auto worker = new DatabaseServiceWorker;
+    //auto ch = new MyChildClass;
+
     worker->moveToThread(m_thread.data());
 
     connect(m_thread.data(), &QThread::finished, worker, &DatabaseServiceWorker::deleteLater);
