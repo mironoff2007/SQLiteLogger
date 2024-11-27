@@ -25,7 +25,8 @@ SOURCES += \
 
 HEADERS += \
     src/abstractWorker.h \
-    src/abstractBackgroundWorker.h \
+    src/abstractbackgroundworker.h \
+    src/abstracttask.h \
     src/database/databaseconnection.h \
     src/database/databasemanager.h \
     src/database/databasemodel.h \

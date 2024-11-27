@@ -2,14 +2,16 @@
 #define ABSTRACTWORKER_H
 
 #include <QThread>
-#include "abstractBackgroundWorker.h"
+#include "abstracttask.h"
+#include "abstractbackgroundworker.h"
+class  AbstractBackgroundWorker;
 
 class AbstractWorker: public QObject
 {
     Q_OBJECT
 public:
     explicit AbstractWorker(
-            AbstractBackGroundWorker* worker,
+            AbstractBackgroundWorker* worker,
             QObject *parent = nullptr
             );
 
@@ -17,17 +19,22 @@ public:
         emit onMainCall(param);
     };
 
-signals:void onMainCall(const QVariant &param);
+signals:
+    void onMainCall(const QVariant &param);
+    void resultTask(const QVariant &result);
 
-private slots: void resultOnMain(const QVariant &result);
+private slots:
+    void resultOnMain(const QVariant &result);
 
 
 private:
     QScopedPointer<QThread> m_thread;
  public:
-    AbstractBackGroundWorker *m_backgroundWorker;
+    AbstractBackgroundWorker *m_backgroundWorker;
 
 };
+
+
 #endif
 
 

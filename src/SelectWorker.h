@@ -8,7 +8,7 @@
 #include "abstractWorker.cpp"
 
 
-class SelectWorker: AbstractBackGroundWorker
+class SelectWorker: AbstractTask
 {
 
     explicit SelectWorker();
