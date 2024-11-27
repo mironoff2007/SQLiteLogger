@@ -4,7 +4,6 @@
 #include "databaseservice.h"
 #include <QFileInfo>
 #include "../threadchecker.h"
-#include "../AbstractWorkerTemp.h"
 #include "../MyChildClass.cpp"
 
 DatabaseService::DatabaseService(QObject *parent)

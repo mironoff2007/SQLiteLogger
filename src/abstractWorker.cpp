@@ -1,31 +1,26 @@
 #include "abstractWorker.h"
+#include "abstractBackgroundWorker.h"
 #include <QDebug>
+#include "MyChildClass.cpp"
 
-AbstractWorker::AbstractWorker(QObject *parent)
+AbstractWorker::AbstractWorker(AbstractBackGroundWorker *worker, QObject *parent)
     : QObject(parent)
     , m_thread(new QThread)
+    , m_backgroundWorker(worker)
 {
-    auto worker = new AbstractBackGroundWorker;
-    worker->moveToThread(m_thread.data());
+    m_backgroundWorker->moveToThread(m_thread.data());
 
-    connect(this, &AbstractWorker::startTask, worker, &AbstractBackGroundWorker::runTaskOnBackGround, Qt::QueuedConnection);
-    //connect(worker, &BackGroundWorker::resultTask, this, &arraystack::resultOnMain, Qt::QueuedConnection);
+    //connect(this, &AbstractWorker::startTask, innerWorker, &AbstractBackGroundWorkerInner::runTaskOnBackGround, Qt::QueuedConnection);
+    //connect(innerWorker, &AbstractBackGroundWorkerInner::resultTask, this, &AbstractWorker::resultOnMain, Qt::QueuedConnection);
 
     m_thread->start();
 }
 
-AbstractBackGroundWorker::AbstractBackGroundWorker(QObject *parent): QObject(parent)
+void AbstractWorker::resultOnMain(const QVariant &result)
 {
-
+    //emit databaseUpdated();
 }
 
-
-void AbstractBackGroundWorker::runTaskOnBackGround()
-{
-
-    QStringList list;
-    //emit resultSelectFileNames(list);
-}
 
 
 

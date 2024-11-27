@@ -1,12 +1,13 @@
 #include "MyParentClass.cpp"
 
-class MyChildClass : public MyParentClass<int>
+class MyChildClass : public MyParentClass
 {
     Q_OBJECT
 
 public:
-    int getValue() const override
+    QString getValue() const override
     {
-        return 42;
+        return "" ;
     }
 };
+

@@ -8,11 +8,10 @@
 #include "abstractWorker.cpp"
 
 
-class SelectWorker: public AbstractWorker
+class SelectWorker: AbstractBackGroundWorker
 {
-public:
-    SelectWorker();
-    QVariant getResult() override;
+
+    explicit SelectWorker();
 
 };
 #endif // SELECTWORKER_H
