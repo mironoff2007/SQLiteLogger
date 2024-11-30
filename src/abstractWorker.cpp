@@ -1,7 +1,6 @@
 #include "abstractWorker.h"
 #include "abstracttask.h"
 #include <QDebug>
-#include "MyChildClass.cpp"
 
 AbstractWorker::AbstractWorker(AbstractBackgroundWorker *worker, QObject *parent)
     : QObject(parent)

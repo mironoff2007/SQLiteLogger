@@ -11,9 +11,8 @@ CONFIG += \
 PKGCONFIG += \
 
 SOURCES += \
-    src/MyChildClass.cpp \
-    src/MyParentClass.cpp \
     src/abstractWorker.cpp \
+    src/abstracttask.cpp \
     src/database/databaseconnection.cpp \
     src/database/databasemanager.cpp \
     src/database/databasemodel.cpp \
@@ -21,6 +20,7 @@ SOURCES += \
     src/logger/applogger.cpp \
     src/logger/loggermodel.cpp \
     src/main.cpp \
+    src/selecttask.cpp \
     src/threadchecker.cpp
 
 HEADERS += \
@@ -33,6 +33,7 @@ HEADERS += \
     src/database/databaseservice.h \
     src/logger/applogger.h \
     src/logger/loggermodel.h \
+    src/selecttask.h \
     src/threadchecker.h
 
 DISTFILES += \

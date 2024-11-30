@@ -1,6 +1,6 @@
-#include "MyParentClass.cpp"
+#include "abstractbackgroundworker.h"
 
-class MyChildClass : public MyParentClass
+class MyChildClass : public AbstractBackgroundWorker
 {
     Q_OBJECT
 
