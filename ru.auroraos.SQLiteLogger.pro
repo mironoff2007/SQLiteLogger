@@ -12,6 +12,7 @@ PKGCONFIG += \
 
 SOURCES += \
     src/abstractWorker.cpp \
+    src/abstractbackgroundworker.cpp \
     src/abstracttask.cpp \
     src/database/databaseconnection.cpp \
     src/database/databasemanager.cpp \

@@ -4,21 +4,26 @@
 #include "abstracttask.h"
 #include <QtSql>
 #include <QHash>
-#include "database/databaseconnection.h"
+#include "abstractbackgroundworker.h"
 
-class SelectTask : public AbstractTask
+class SelectTask : public AbstractBackgroundWorker
 {
     Q_OBJECT
 
 public:
     explicit SelectTask(QObject *parent = nullptr);
 
-    const QVariant& exequteTask(const QVariant &param) override;
+    const QVariant exequteTask(const QVariant &param) override;
 
-
-private:
+public:
     QHash<QString, DatabaseConnection *> m_connections;
     QString m_currentFilePath;
+
+    void setConnection(const QString &filepath){
+        auto conn  = new DatabaseConnection(filepath);
+        m_currentFilePath = filepath;
+        m_connections.insert(filepath, conn);
+    }
 };
 
 #endif // SELECTTASK_H

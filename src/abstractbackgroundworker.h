@@ -10,7 +10,6 @@ class AbstractBackgroundWorker : public QObject
     Q_OBJECT
 public:
     explicit AbstractBackgroundWorker(
-            AbstractTask* worker,
             QObject *parent = nullptr
             );
 
@@ -20,7 +19,9 @@ signals:
 public slots:
     void runTaskOnBackGround(const QVariant &param);
 
+
 public:
-   AbstractTask *m_backgroundWorker;
+    virtual const QVariant exequteTask(const QVariant &param)= 0;
+
 };
 #endif // ABSTRACTBACKGROUNDWORKER_H

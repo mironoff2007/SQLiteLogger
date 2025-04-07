@@ -8,35 +8,29 @@
 #include <QFileInfo>
 #include "threadchecker.h"
 #include "database/databaseconnection.h"
+#include "abstractbackgroundworker.cpp"
 
 
-SelectTask::SelectTask(QObject *parent): AbstractTask(parent){
+SelectTask::SelectTask(QObject *parent): AbstractBackgroundWorker(parent){
 
 }
 
-const QVariant& SelectTask:: exequteTask(const QVariant &param) {
+
+const QVariant SelectTask:: exequteTask(const QVariant &param) {
+    try {
         ThreadChecker::logIfMainThread("handleSelectFileNames");
         QStringList list;
-        const QString selectString = QString("SELECT * FROM logfiles;");
-
-                QSqlQuery query(m_connections[m_currentFilePath]->database());
-                if (!query.prepare(selectString)) {
-                    qWarning() << "Wrong prepare operation! " << query.lastError().text();
-                }
-
-                if (!query.exec()) {
-                    qWarning() << "Wrong select operation! " << query.lastError().text();
-                }
-
-                const int indexFileName = query.record().indexOf("filename");
-
-                while(query.next()) {
-                    const QString baseName = query.value(indexFileName).toString();
-
-                    list.push_back(baseName);
-                }
+        list.push_back("test1");
+        const int size = list.size();
+        qInfo() << "list size-" << size;
         QVariant q = QVariant::fromValue(list);
+        QStringList retrievedList = q.value<QStringList>();
+        qDebug() << "List size:" << retrievedList.size();
         return q;
+    }  catch (const std::exception &e) {
+        qCritical() << "Exception in executeTask:" << e.what();
+        return (QVariant());  // Emit empty QVariant on error
     }
+}
 
 

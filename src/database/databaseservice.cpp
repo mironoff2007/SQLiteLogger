@@ -4,22 +4,24 @@
 #include "databaseservice.h"
 #include <QFileInfo>
 #include "../threadchecker.h"
+#include "../abstractbackgroundworker.h"
+#include "../selecttask.cpp"
 
 DatabaseService::DatabaseService(QObject *parent)
     : QObject(parent)
     , m_thread(new QThread)
+    , selectWorker(new AbstractWorker(new SelectTask()))
 {
     auto worker = new DatabaseServiceWorker;
-    //auto ch = new MyChildClass;
-
     worker->moveToThread(m_thread.data());
 
     connect(m_thread.data(), &QThread::finished, worker, &DatabaseServiceWorker::deleteLater);
     // Insert
     connect(this, &DatabaseService::operateInsert, worker, &DatabaseServiceWorker::handleInsert, Qt::QueuedConnection);
     // Select
-    connect(this, &DatabaseService::operateSelectFileNames, worker, &DatabaseServiceWorker::handleSelectFileNames, Qt::QueuedConnection);
-    connect(worker, &DatabaseServiceWorker::resultSelectFileNames, this, &DatabaseService::onResultSelectFileNames, Qt::QueuedConnection);
+    //connect(this, &DatabaseService::operateSelectFileNames, worker, &DatabaseServiceWorker::handleSelectFileNames, Qt::QueuedConnection);
+    //connect(worker, &DatabaseServiceWorker::resultSelectFileNames, this, &DatabaseService::onResultSelectFileNames, Qt::QueuedConnection);
+    connect(selectWorker, &AbstractWorker::resultTask, this, &DatabaseService::onResultSelectFileNames, Qt::QueuedConnection);
     // Setdatabase
     connect(this, &DatabaseService::operateSetDatabase, worker, &DatabaseServiceWorker::handleSetDatabase, Qt::QueuedConnection);
     connect(worker, &DatabaseServiceWorker::resultSetDatabase, this, &DatabaseService::onResultSetDatabase, Qt::QueuedConnection);
@@ -42,18 +44,25 @@ void DatabaseService::insert(const QString &filename, const QString &filepath)
 void DatabaseService::selectFileNames()
 {
     ThreadChecker::logIfMainThread("selectFileNames");
+    selectWorker->startTask(QVariant(0));
     emit operateSelectFileNames();//signal
 }
 
 void DatabaseService::setDatabase(const QString &filepath)
 {
+    SelectTask *worker = dynamic_cast<SelectTask*>(selectWorker->m_backgroundWorker);
+    worker->setConnection(filepath);
     emit operateSetDatabase(filepath);
 }
 
-void DatabaseService::onResultSelectFileNames(const QStringList &list)
+void DatabaseService::onResultSelectFileNames(const QVariant &result)
 {
     ThreadChecker::logIfMainThread("onResultSelectFileNames");
-    emit fileNames(list);
+    QStringList list = result.value<QStringList>();
+    for (const QString &str : list) {
+           qDebug() << str;
+     }
+     emit fileNames(list);
 }
 
 void DatabaseService::onResultSetDatabase()

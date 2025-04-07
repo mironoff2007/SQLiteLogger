@@ -39,6 +39,7 @@ void DatabaseManager::onFileNames(const QStringList &list)
 {
     m_fileNames.clear();
     m_fileNames = list;
+    qInfo() << "DatabaseManager::onFileNames-list size-" << list.size();
 
     emit fileNames(list);
 }

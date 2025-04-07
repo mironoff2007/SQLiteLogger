@@ -13,7 +13,7 @@ public:
             );
 
 public:
-    virtual const QVariant& exequteTask(const QVariant &param)= 0;
+    virtual const QVariant exequteTask(const QVariant &param)= 0;
 
 };
 

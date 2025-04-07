@@ -19,6 +19,7 @@ Page {
         id: databaseModel
 
         onFileNames: function(list) {
+            console.log("Current ListModel size:", list.length);
             fileNameModel.clear();
             for (var i = 0; i < list.length; i++) {
                 fileNameModel.append({name: list[i]});

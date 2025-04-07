@@ -1,16 +1,6 @@
-#include <QObject>
+#include "abstractbackgroundworker.h"
 
 
-class AbstractBackGroundWorker : public QObject
-{
-    Q_OBJECT
+AbstractBackgroundWorker::AbstractBackgroundWorker(QObject *parent): QObject(parent){
 
-
-signals:
-    void resultTask(const QVariant &param);
-
-public slots:
-    void runTaskOnBackGround();
-
-};
-
+}

@@ -9,6 +9,7 @@
 #include <QtSql>
 #include <QHash>
 #include "databaseconnection.h"
+#include "../abstractbackgroundworker.h"
 
 class DatabaseService : public QObject
 {
@@ -30,11 +31,12 @@ signals:
     void databaseUpdated();
 
 private slots:
-    void onResultSelectFileNames(const QStringList &list);
+    void onResultSelectFileNames(const QVariant &result);
     void onResultSetDatabase();
 
-private:
+public:
     QScopedPointer<QThread> m_thread;
+    AbstractWorker* selectWorker;
 };
 
 
