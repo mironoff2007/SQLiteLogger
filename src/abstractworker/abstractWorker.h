@@ -4,7 +4,6 @@
 #include <QThread>
 #include "abstracttask.h"
 #include "abstractbackgroundworker.h"
-#include "database/databaseconnection.h"
 
 class  AbstractBackgroundWorker;
 

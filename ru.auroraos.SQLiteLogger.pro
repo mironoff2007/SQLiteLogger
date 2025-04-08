@@ -11,9 +11,9 @@ CONFIG += \
 PKGCONFIG += \
 
 SOURCES += \
-    src/abstractWorker.cpp \
-    src/abstractbackgroundworker.cpp \
-    src/abstracttask.cpp \
+    src/abstractworker/abstractBackgroundWorker.cpp \
+    src/abstractworker/abstractWorker.cpp \
+    src/abstractworker/abstracttask.cpp \
     src/database/databaseconnection.cpp \
     src/database/databasemanager.cpp \
     src/database/databasemodel.cpp \
@@ -25,9 +25,9 @@ SOURCES += \
     src/threadchecker.cpp
 
 HEADERS += \
-    src/abstractWorker.h \
-    src/abstractbackgroundworker.h \
-    src/abstracttask.h \
+    src/abstractworker/abstractWorker.h \
+    src/abstractworker/abstractbackgroundworker.h \
+    src/abstractworker/abstracttask.h \
     src/database/databaseconnection.h \
     src/database/databasemanager.h \
     src/database/databasemodel.h \

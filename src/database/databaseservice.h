@@ -9,7 +9,7 @@
 #include <QtSql>
 #include <QHash>
 #include "databaseconnection.h"
-#include "../abstractbackgroundworker.h"
+#include "../abstractworker/abstractbackgroundworker.h"
 
 class DatabaseService : public QObject
 {

@@ -21,7 +21,7 @@ public slots:
 
 
 public:
-    virtual const QVariant exequteTask(const QVariant &param)= 0;
+    virtual const QVariant executeTask(const QVariant &param)= 0;
 
 };
 #endif // ABSTRACTBACKGROUNDWORKER_H

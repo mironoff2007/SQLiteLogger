@@ -1,10 +1,10 @@
 #ifndef SELECTTASK_H
 #define SELECTTASK_H
-
-#include "abstracttask.h"
+#include "abstractworker/abstractbackgroundworker.h"
+#include "abstractworker/abstracttask.h"
 #include <QtSql>
 #include <QHash>
-#include "abstractbackgroundworker.h"
+#include "database/databaseConnection.h"
 
 class SelectTask : public AbstractBackgroundWorker
 {
@@ -13,7 +13,7 @@ class SelectTask : public AbstractBackgroundWorker
 public:
     explicit SelectTask(QObject *parent = nullptr);
 
-    const QVariant exequteTask(const QVariant &param) override;
+    const QVariant executeTask(const QVariant &param) override;
 
 public:
     QHash<QString, DatabaseConnection *> m_connections;

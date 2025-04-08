@@ -23,17 +23,8 @@ void AbstractWorker::resultOnMain(const QVariant &result)
 
 void AbstractBackgroundWorker::runTaskOnBackGround(const QVariant &param) {
     try {
-        const QVariant result = this->exequteTask(param);
-
-        // Safely check if the result is a QStringList
-        if (result.canConvert<QStringList>()) {
-            QStringList retrievedList = result.value<QStringList>();
-            qDebug() << "runTaskOnBackground - List size:" << retrievedList.size();
-            emit resultTask(result);  // Success: emit the result
-        } else {
-            qWarning() << "Error: Result is not a QStringList!";
-            emit resultTask(QVariant());  // Emit empty QVariant on failure
-        }
+        const QVariant result = this->executeTask(param);
+        emit resultTask(result);
     }
     catch (const std::exception &e) {
         qCritical() << "Exception in executeTask:" << e.what();
