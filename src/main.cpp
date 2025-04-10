@@ -7,6 +7,9 @@
 #include "database/databasemodel.h"
 #include "logger/loggermodel.h"
 #include "logger/applogger.h"
+#include "databaseviewmodel.h"
+#include "state.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +21,9 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<LoggerModel>("ru.auroraos.LoggerModel", 1, 0, "LoggerModel");
     qmlRegisterType<DatabaseModel>("ru.auroraos.DatabaseModel", 1, 0, "DatabaseModel");
+    qmlRegisterType<DataBaseViewModel>("ru.auroraos.DataBaseViewModel", 1, 0, "DataBaseViewModel");
+    //qmlRegisterType<State>("ru.auroraos.State", 1, 0, "State");
+
 
     QScopedPointer<QQuickView> view(Aurora::Application::createView());
     view->setSource(Aurora::Application::pathTo(QStringLiteral("qml/SQLiteLogger.qml")));

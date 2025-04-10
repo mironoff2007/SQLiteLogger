@@ -8,9 +8,7 @@ class AbstractTask : public QObject
 {
     Q_OBJECT
 public:
-    explicit AbstractTask(
-            QObject *parent = nullptr
-            );
+    explicit AbstractTask(QObject *parent = nullptr);
 
 public:
     virtual const QVariant exequteTask(const QVariant &param)= 0;

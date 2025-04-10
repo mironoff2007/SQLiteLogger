@@ -4,6 +4,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import ru.auroraos.DatabaseModel 1.0
+import ru.auroraos.DataBaseViewModel 1.0
+
 
 Page {
     id: databasePage
@@ -26,6 +28,24 @@ Page {
             }
         }
     }
+
+    DataBaseViewModel {
+            id: dbViewModel
+
+            onSomeData: {
+                console.log("Received data in QML:", list)
+                fileNameModel.clear();
+                for (var i = 0; i < list.length; i++) {
+                    fileNameModel.append({name: list[i]});
+                }
+            }
+
+            onSuccessState: function(state) {
+                console.log("onSuccessState")
+            }
+
+
+        }
 
     ListModel {
         id: fileNameModel
@@ -142,7 +162,8 @@ Page {
                     text: qsTr("Select йоу")
 
                     onClicked: {
-                        databaseModel.selectData();
+                        //databaseModel.selectData();
+                        dbViewModel.generateSomeData();
                     }
                 }
             }

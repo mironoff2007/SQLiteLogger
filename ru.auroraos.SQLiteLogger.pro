@@ -14,6 +14,7 @@ SOURCES += \
     src/abstractworker/abstractBackgroundWorker.cpp \
     src/abstractworker/abstractWorker.cpp \
     src/abstractworker/abstracttask.cpp \
+    src/dataBaseViewModel.cpp \
     src/database/databaseconnection.cpp \
     src/database/databasemanager.cpp \
     src/database/databasemodel.cpp \
@@ -22,12 +23,15 @@ SOURCES += \
     src/logger/loggermodel.cpp \
     src/main.cpp \
     src/selecttask.cpp \
-    src/threadchecker.cpp
+    src/state.cpp \
+    src/threadchecker.cpp\
+    src/state.cpp
 
 HEADERS += \
     src/abstractworker/abstractWorker.h \
     src/abstractworker/abstractbackgroundworker.h \
     src/abstractworker/abstracttask.h \
+    src/dataBaseViewModel.h \
     src/database/databaseconnection.h \
     src/database/databasemanager.h \
     src/database/databasemodel.h \
@@ -35,7 +39,9 @@ HEADERS += \
     src/logger/applogger.h \
     src/logger/loggermodel.h \
     src/selecttask.h \
-    src/threadchecker.h
+    src/state.h \
+    src/threadchecker.h\
+    src/state.h
 
 DISTFILES += \
     qml/pages/DatabaseUtils.qml \
