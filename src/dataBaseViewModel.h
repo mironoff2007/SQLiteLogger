@@ -14,7 +14,7 @@ public:
     Q_INVOKABLE void generateSomeData();
 
 signals:
-    void someData(const QStringList &list);
+    void someData(const QStringList list);
     void successState(const QVariant state);  // Emit the complete state
 
 

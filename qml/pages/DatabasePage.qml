@@ -30,22 +30,26 @@ Page {
     }
 
     DataBaseViewModel {
-            id: dbViewModel
+        id: dbViewModel
 
-            onSomeData: {
-                console.log("Received data in QML:", list)
-                fileNameModel.clear();
-                for (var i = 0; i < list.length; i++) {
-                    fileNameModel.append({name: list[i]});
-                }
+        onSomeData:function(list) {
+            console.log("onSuccessState")
+            for (var i = 0; i < list.length; i++) {
+                fileNameModel.append({name: list[i]});
             }
-
-            onSuccessState: function(state) {
-                console.log("onSuccessState")
-            }
-
-
         }
+
+        /** @type {Person} */
+        onSuccessState: function(personVariant) {
+            console.log("onSuccessState")
+            // Get the Person object from QVariant
+            var person  = personVariant
+
+            // Update UI
+            console.log("Name: " + person.name + "\nAge: " + person.age)
+        }
+
+    }
 
     ListModel {
         id: fileNameModel

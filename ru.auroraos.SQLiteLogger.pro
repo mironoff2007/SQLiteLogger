@@ -38,6 +38,7 @@ HEADERS += \
     src/database/databaseservice.h \
     src/logger/applogger.h \
     src/logger/loggermodel.h \
+    src/person.h \
     src/selecttask.h \
     src/state.h \
     src/threadchecker.h\
