@@ -9,7 +9,7 @@ class AbstractBackgroundWorker : public QObject
 {
     Q_OBJECT
 public:
-    explicit AbstractBackgroundWorker(QObject *parent = nullptr);
+     explicit AbstractBackgroundWorker(QObject *parent = nullptr) : QObject(parent) {}
 
 signals:
     void resultTask(const QVariant &result);

@@ -11,7 +11,6 @@ CONFIG += \
 PKGCONFIG += \
 
 SOURCES += \
-    src/abstractworker/abstractBackgroundWorker.cpp \
     src/abstractworker/abstractWorker.cpp \
     src/abstractworker/abstracttask.cpp \
     src/dataBaseViewModel.cpp \
@@ -28,6 +27,7 @@ SOURCES += \
     src/state.cpp
 
 HEADERS += \
+    src/abstractviewmodel.h \
     src/abstractworker/abstractWorker.h \
     src/abstractworker/abstractbackgroundworker.h \
     src/abstractworker/abstracttask.h \
