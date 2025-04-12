@@ -12,7 +12,7 @@ public:
      explicit AbstractBackgroundWorker(QObject *parent = nullptr) : QObject(parent) {}
 
 signals:
-    void resultTask(const QVariant &result);
+    void resultBackgroundTask(const QVariant &result);
 
 public slots:
     void runTaskOnBackGround(const QVariant &param);

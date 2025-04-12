@@ -2,19 +2,18 @@
 #include <QDebug>
 #include <QTimer>
 #include "person.h"
+#include "abstractviewmodel.h"
 
 DataBaseViewModel::DataBaseViewModel(QObject *parent)
-    : QObject(parent)  // Remove the m_currentState initialization here
+    : AbstractDataBaseViewModel(parent)  // Remove the m_currentState initialization here
 {
-    m_currentState = State::Loading();  // Initialize in constructor body instead
+    // Initialize in constructor body instead
     // Constructor implementation
     // You might want to initialize connections or data here
 }
 
 void DataBaseViewModel::generateSomeData()
 {
-    m_currentState = State::Loading{};
-
     qDebug() << "Generating some data...";
 
     // Simulate async operation
@@ -31,13 +30,10 @@ void DataBaseViewModel::generateSomeData()
             // Convert to QVariant
             QVariant variant;
             variant.setValue(person);
-            emit successState(variant);
-
-            // Also emit the original signal if needed
-            emit someData(dummyData);
+            emit success(variant);
         } catch (const std::exception& e) {
             // Set error state
-            m_currentState = State::State::Error(e.what());
+
         }
     });
 }

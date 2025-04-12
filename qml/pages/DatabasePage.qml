@@ -5,6 +5,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import ru.auroraos.DatabaseModel 1.0
 import ru.auroraos.DataBaseViewModel 1.0
+import ru.auroraos.AbstractDataBaseViewModel 1.0
 
 
 Page {
@@ -32,21 +33,15 @@ Page {
     DataBaseViewModel {
         id: dbViewModel
 
-        onSomeData:function(list) {
-            console.log("onSuccessState")
-            for (var i = 0; i < list.length; i++) {
-                fileNameModel.append({name: list[i]});
-            }
-        }
-
         /** @type {Person} */
-        onSuccessState: function(personVariant) {
+        onSuccess: function(personVariant) {
             console.log("onSuccessState")
             // Get the Person object from QVariant
             var person  = personVariant
 
             // Update UI
             console.log("Name: " + person.name + "\nAge: " + person.age)
+            console.log("person.length: " + person.length)
         }
 
     }
@@ -166,7 +161,7 @@ Page {
                     text: qsTr("Select йоу")
 
                     onClicked: {
-                        //databaseModel.selectData();
+                        databaseModel.selectData();
                         dbViewModel.generateSomeData();
                     }
                 }

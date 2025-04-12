@@ -2,24 +2,18 @@
 #define DATABASEVIEWMODEL_H
 
 #include <QAbstractListModel>
-#include "state.h"
+#include "abstractviewmodel.h"
 
-class DataBaseViewModel : public QObject
+class DataBaseViewModel : public  AbstractDataBaseViewModel
 {
     Q_OBJECT
+
 public:
     explicit DataBaseViewModel(QObject *parent = nullptr);
     ~DataBaseViewModel() override = default;
 
     Q_INVOKABLE void generateSomeData();
 
-signals:
-    void someData(const QStringList list);
-    void successState(const QVariant state);  // Emit the complete state
-
-
-private:
-    State m_currentState;
 
 };
 #endif // DATABASEVIEWMODEL_H
