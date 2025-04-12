@@ -1,7 +1,6 @@
-#include "abstractworker/abstractBackgroundWorker.cpp"
+
 #include "selecttask.h"
 #include "abstractworker/abstracttask.h"
-#include "abstractworker/abstracttask.cpp"
 #include "QVariant"
 #include "QObject"
 #include <QtSql>
@@ -9,6 +8,7 @@
 #include <QFileInfo>
 #include "threadchecker.h"
 #include "database/databaseconnection.h"
+#include "abstractworker/abstractbackgroundworker.h"
 
 
 

@@ -12,7 +12,6 @@ PKGCONFIG += \
 
 SOURCES += \
     src/abstractworker/abstractWorker.cpp \
-    src/abstractworker/abstracttask.cpp \
     src/dataBaseViewModel.cpp \
     src/database/databaseconnection.cpp \
     src/database/databasemanager.cpp \
@@ -30,7 +29,6 @@ HEADERS += \
     src/abstractviewmodel.h \
     src/abstractworker/abstractWorker.h \
     src/abstractworker/abstractbackgroundworker.h \
-    src/abstractworker/abstracttask.h \
     src/dataBaseViewModel.h \
     src/database/databaseconnection.h \
     src/database/databasemanager.h \
