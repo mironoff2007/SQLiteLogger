@@ -3,14 +3,29 @@
 
 #include <QObject>
 #include <QVariant>
+#include "clonable.h"
 
-class Person : public QObject {
+class Person : public QObject, public Clonable
+{
     Q_OBJECT
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(int age READ age WRITE setAge NOTIFY ageChanged)
 
 public:
     explicit Person(QObject *parent = nullptr) : QObject(parent) {}
+
+    // Copy constructor for cloning
+    Person(const Person &other, QObject *parent = nullptr)
+        : QObject(parent),
+          m_name(other.m_name),
+          m_age(other.m_age)
+    {
+    }
+
+    // Clonable interface implementation
+    Clonable* clone() const override {
+        return new Person(*this);
+    }
 
     QString name() const { return m_name; }
     void setName(const QString &name) {
@@ -36,4 +51,5 @@ private:
     QString m_name;
     int m_age = 0;
 };
+
 #endif // PERSON_H

@@ -4,32 +4,32 @@
 <context>
     <name>DatabasePage</name>
     <message>
-        <location filename="../qml/pages/DatabasePage.qml" line="71"/>
+        <location filename="../qml/pages/DatabasePage.qml" line="90"/>
         <source>SQLite</source>
         <translation>SQLite</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DatabasePage.qml" line="79"/>
+        <location filename="../qml/pages/DatabasePage.qml" line="98"/>
         <source>Database: </source>
         <translation>Database: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/DatabasePage.qml" line="107"/>
+        <location filename="../qml/pages/DatabasePage.qml" line="126"/>
         <source>Operations</source>
         <translation>Operations</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DatabasePage.qml" line="129"/>
+        <location filename="../qml/pages/DatabasePage.qml" line="148"/>
         <source>Insert</source>
         <translation>Insert</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DatabasePage.qml" line="142"/>
+        <location filename="../qml/pages/DatabasePage.qml" line="161"/>
         <source>Select йоу</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DatabasePage.qml" line="151"/>
+        <location filename="../qml/pages/DatabasePage.qml" line="171"/>
         <source>Log files:</source>
         <translation>Log files:</translation>
     </message>

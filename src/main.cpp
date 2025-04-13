@@ -27,7 +27,10 @@ int main(int argc, char *argv[])
     qmlRegisterType<AbstractDataBaseViewModel>("ru.auroraos.AbstractDataBaseViewModel", 1, 0, "AbstractDataBaseViewModel");
     qmlRegisterType<DataBaseViewModel>("ru.auroraos.DataBaseViewModel", 1, 0, "DataBaseViewModel");
     qmlRegisterType<Person>("ru.auroraos.Person", 1, 0, "Person");
-    //qmlRegisterType<State>("ru.auroraos.State", 1, 0, "State");
+    qmlRegisterInterface<Clonable>("Clonable");
+
+    qRegisterMetaType<Clonable*>("Clonable*");
+    qRegisterMetaType<const Clonable*>("const Clonable*");
 
 
     QScopedPointer<QQuickView> view(Aurora::Application::createView());

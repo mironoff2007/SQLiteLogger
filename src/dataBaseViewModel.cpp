@@ -3,14 +3,24 @@
 #include <QTimer>
 #include "person.h"
 #include "abstractviewmodel.h"
+#include "selecttask.h"
+#include "abstractworker/abstractbackgroundworker.h"
 
 DataBaseViewModel::DataBaseViewModel(QObject *parent)
-    : AbstractDataBaseViewModel(parent)  // Remove the m_currentState initialization here
+    : AbstractDataBaseViewModel(parent)
+    , selectWorker(new AbstractWorker(new SelectTask()))
 {
     // Initialize in constructor body instead
     // Constructor implementation
     // You might want to initialize connections or data here
+     connect(selectWorker, &AbstractWorker::resultTask, this, &DataBaseViewModel::onResultSelectFileNames, Qt::QueuedConnection);
 }
+
+void DataBaseViewModel::onResultSelectFileNames(const QVariant &result)
+{
+      qDebug() << "select result" << result;
+}
+
 
 void DataBaseViewModel::generateSomeData()
 {
@@ -28,12 +38,12 @@ void DataBaseViewModel::generateSomeData()
             person->setAge(30);
 
             // Convert to QVariant
-            QVariant variant;
-            variant.setValue(person);
-            emit success(variant);
+            //updateSuccesState(person);
+            QVariant variant = QVariant::fromValue(person);
+           emit success(variant);
         } catch (const std::exception& e) {
             // Set error state
-
+           emit error(e.what());
         }
     });
 }

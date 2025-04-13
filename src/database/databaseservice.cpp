@@ -6,6 +6,8 @@
 #include "../threadchecker.h"
 #include "../abstractworker/abstractbackgroundworker.h"
 #include "../selecttask.cpp"
+#include "databaseconnection.h"
+#include "databaseconnection.cpp"
 
 DatabaseService::DatabaseService(QObject *parent)
     : QObject(parent)
@@ -50,8 +52,6 @@ void DatabaseService::selectFileNames()
 
 void DatabaseService::setDatabase(const QString &filepath)
 {
-    SelectTask *worker = dynamic_cast<SelectTask*>(selectWorker->m_backgroundWorker);
-    worker->setConnection(filepath);
     emit operateSetDatabase(filepath);
 }
 
@@ -145,7 +145,7 @@ void DatabaseServiceWorker::handleSetDatabase(const QString &filepath)
         m_currentFilePath = filepath;
 
     if (!m_connections.contains(filepath)) {
-        auto conn  = new DatabaseConnection(filepath);
+        auto conn  = new DatabaseConnection();
         m_connections.insert(filepath, conn);
     }
 

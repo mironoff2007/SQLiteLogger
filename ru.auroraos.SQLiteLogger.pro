@@ -23,12 +23,13 @@ SOURCES += \
     src/selecttask.cpp \
     src/state.cpp \
     src/threadchecker.cpp\
-    src/state.cpp
+    src/state.cpp \
 
 HEADERS += \
     src/abstractviewmodel.h \
     src/abstractworker/abstractWorker.h \
     src/abstractworker/abstractbackgroundworker.h \
+    src/clonable.h \
     src/dataBaseViewModel.h \
     src/database/databaseconnection.h \
     src/database/databasemanager.h \

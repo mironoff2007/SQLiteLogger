@@ -2,12 +2,25 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 #include "databaseconnection.h"
+#include <auroraapp/auroraapp.h>
 
-DatabaseConnection::DatabaseConnection(const QString &filepath, QObject *parent)
+namespace
+{
+    const auto defaultDatabaseName = QStringLiteral("db0.sqlite");
+
+    auto appPath()
+    {
+        return Aurora::Application::filesDir(false).path();
+    }
+}
+
+
+DatabaseConnection::DatabaseConnection(QObject *parent)
     : QObject(parent)
     , m_name(QUuid::createUuid().toString())
-    , m_filePath(filepath)
 {
+    const auto filepath = QString("%1/%2").arg(appPath(), defaultDatabaseName);
+    m_filePath = filepath;
     auto database = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), m_name);
     database.setDatabaseName(m_filePath);
     database.open();

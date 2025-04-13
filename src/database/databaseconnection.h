@@ -13,7 +13,7 @@ class DatabaseConnection : public QObject
     Q_OBJECT
     Q_DISABLE_COPY(DatabaseConnection)
 public:
-    DatabaseConnection(const QString &filepath, QObject *parent = nullptr);
+    DatabaseConnection(QObject *parent = nullptr);
 
     ~DatabaseConnection() override;
 

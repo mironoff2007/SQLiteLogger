@@ -13,7 +13,7 @@
 
 
 SelectTask::SelectTask(QObject *parent): AbstractBackgroundWorker(parent) {
-
+    setConnection();
 }
 
 

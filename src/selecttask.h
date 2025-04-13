@@ -19,10 +19,10 @@ public:
     QHash<QString, DatabaseConnection *> m_connections;
     QString m_currentFilePath;
 
-    void setConnection(const QString &filepath){
-        auto conn  = new DatabaseConnection(filepath);
-        m_currentFilePath = filepath;
-        m_connections.insert(filepath, conn);
+    void setConnection(){
+        auto conn  = new DatabaseConnection();
+        m_currentFilePath = conn->filePath();
+        m_connections.insert(m_currentFilePath, conn);
     }
 };
 
